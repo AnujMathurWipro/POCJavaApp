@@ -8,8 +8,6 @@ import androidx.databinding.BindingAdapter;
 import com.squareup.picasso.Picasso;
 
 public class Binding {
-
-
     @BindingAdapter("imageUrl")
     public static void loadImage(ImageView view, String url) {
         Log.d("BindingAdapter", "URL to be loaded = " +url);

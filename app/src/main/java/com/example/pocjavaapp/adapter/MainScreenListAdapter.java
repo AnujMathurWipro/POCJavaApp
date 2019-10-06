@@ -1,19 +1,16 @@
 package com.example.pocjavaapp.adapter;
 
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.pocjavaapp.R;
 import com.example.pocjavaapp.databinding.ItemListBinding;
 import com.example.pocjavaapp.models.RowsItem;
-import com.squareup.picasso.Picasso;
-
-import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
@@ -27,8 +24,9 @@ public class MainScreenListAdapter extends RecyclerView.Adapter<MainScreenListAd
         itemList = list;
     }
 
+    @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NotNull ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         ItemListBinding binding = DataBindingUtil.inflate(inflater, R.layout.item_list, parent, false);
         return new ViewHolder(binding.getRoot());
     }
@@ -41,9 +39,11 @@ public class MainScreenListAdapter extends RecyclerView.Adapter<MainScreenListAd
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         ItemListBinding binding = DataBindingUtil.getBinding(holder.itemView);
-        RowsItem item = itemList.get(position);
-        binding.setItem(item);
-        binding.executePendingBindings();
+        if(binding != null) {
+            RowsItem item = itemList.get(position);
+            binding.setItem(item);
+            binding.executePendingBindings();
+        }
     }
 
     public void setListItems(List<RowsItem> items) {

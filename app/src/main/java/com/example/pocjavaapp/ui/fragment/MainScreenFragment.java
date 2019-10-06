@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
@@ -16,8 +17,6 @@ import com.example.pocjavaapp.databinding.FragmentMainBinding;
 import com.example.pocjavaapp.ui.MainActivity;
 import com.example.pocjavaapp.util.Utility;
 import com.example.pocjavaapp.viewmodel.MainScreenViewModel;
-
-import org.jetbrains.annotations.NotNull;
 
 public class MainScreenFragment extends Fragment {
 
@@ -46,12 +45,12 @@ public class MainScreenFragment extends Fragment {
         binding.tvErrorText.setText(message);
     }
 
-    @Override public View onCreateView(@NotNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    @Override public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_main, container, false);
         return binding.getRoot();
     }
 
-    @Override public void onViewCreated(View view, Bundle savedInstanceState) {
+    @Override public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         getResponseFromServer(false);
         binding.srlSwipeRefresh.setOnRefreshListener(() -> getResponseFromServer(true));
